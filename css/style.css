@@ -1,0 +1,109 @@
+
+
+
+#design_1 {
+    background-color: rosybrown;
+    position: absolute;
+    top: 90px;
+    left: 220px;
+    width: 240px;
+    height: 40px;
+}
+
+#design_2 {
+    background-color: rosybrown;
+    position: absolute;
+    top: 90px;
+    left: 490px;
+    width: 240px;
+    height: 40px;
+}
+
+#design_3 {
+    background-color: rosybrown;
+    position: absolute;
+    top: 90px;
+    left: 760px;
+    width: 240px;
+    height: 40px;
+}
+
+#design_4 {
+    background-color: rosybrown;
+    position: absolute;
+    top: 90px;
+    left: 1030px;
+    width: 240px;
+    height: 40px;
+}
+
+#oberteil_blau {
+    background-color: dodgerblue;
+    position: absolute;
+    top: 165px;
+    left: 850px;
+    width: 100px;
+    height: 40px;
+}
+
+#oberteil_rot {
+    background-color: red;
+    position: absolute;
+    top: 165px;
+    left: 970px;
+    width: 100px;
+    height: 40px;
+}
+
+#oberteil_schwarz {
+    background-color: black;
+    position: absolute;
+    top: 165px;
+    left: 1090px;
+    width: 100px;
+    height: 40px;
+    color: white;
+}
+
+#unterteil_blau {
+    background-color: dodgerblue;
+    position: absolute;
+    top: 425px;
+    left: 850px;
+    width: 100px;
+    height: 40px;
+}
+#unterteil_rot {
+    background-color: red;
+    position: absolute;
+    top: 425px;
+    left: 970px;
+    width: 100px;
+    height: 40px;
+}
+
+#unterteil_schwarz {
+    background-color: black;
+    position: absolute;
+    top: 425px;
+    left: 1090px;
+    width: 100px;
+    height: 40px;
+    color: white;
+}
+
+#oberteil {
+    position: absolute;
+    top: 160px;
+    left: 220px;
+    width: 340px;
+    height: 240px;
+}
+
+#unterteil {
+    position: absolute;
+    top: 415px;
+    left: 220px;
+    width: 340px;
+    height: 240px;
+}
