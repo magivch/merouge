@@ -1,58 +1,75 @@
+/*
+Naming Conventions (to follow):
+=============================
+- for ids, use underscore(_)
+- for classes, use hyphen(-)
+*/
 
-
-#design_1 {
-    background-color: rosybrown;
-    position: absolute;
+/* Fonts */
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
 }
 
-#design_2 {
-    background-color: rosybrown;
-    position: absolute;
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('../fonts/Poppins-Medium.ttf') format('truetype');
 }
 
-#design_3 {
-    background-color: rosybrown;
-    position: absolute;
+.font-poppins-medium {
+    font-family: Poppins-Medium, sans-serif;
 }
 
-#design_4 {
-    background-color: rosybrown;
-    position: absolute;
+.font-poppins-regular {
+    font-family: Poppins-Regular, sans-serif;
 }
 
-#oberteil_blau {
-    background-color: dodgerblue;
-    position: absolute;
+.app-bg {
 }
 
-#oberteil_rot {
-    background-color: red;
-    position: absolute;
+.main-container {
+    background-color: #fff5e4;
 }
 
-#oberteil_schwarz {
-    background-color: black;
-    position: absolute;
+.menu-btn {
+    background-color: #EEE7E7 !important;
+    border: none !important;
+    color: black !important;
 }
 
-#unterteil_blau {
-    background-color: dodgerblue;
-    position: absolute;
-}
-#unterteil_rot {
-    background-color: red;
-    position: absolute;
+.menu-btn:hover {
+    background-color: #E65050 !important;
+    color: white !important;
 }
 
-#unterteil_schwarz {
-    background-color: black;
-    position: absolute;
+.product-container {
+    background-color: #FCDFDF;
 }
 
-#oberteil {
-    position: absolute;
+.color-blue {
+    background-color: #64CBD0;
 }
 
-#unterteil {
-    position: absolute;
+.color-red {
+    background-color: #AE000F;
+}
+
+.color-black {
+    background-color: #363A46;
+}
+
+.color-selected {
+    border: 4px solid #FFF;
+    width: 62px !important;
+    height: 62px !important;
+    cursor: pointer;
+}
+
+.button-color:hover {
+    cursor: pointer;
+}
+
+.button-color {
+    width: 58px;
+    height: 58px;
 }
