@@ -38,12 +38,23 @@ Naming Conventions (to follow):
 }
 
 .menu-btn:hover {
+    background-color: #ef6a6a !important;
+    color: white !important;
+}
+
+.radio-btn + label {
+    background-color: #EEE7E7 !important;
+    border: none !important;
+    color: black !important;
+}
+
+.radio-btn:checked + label {
     background-color: #E65050 !important;
     color: white !important;
 }
 
 .product-container {
-    background-color: #FCDFDF;
+    background-color: #FFE9C3;
 }
 
 .color-blue {
@@ -65,11 +76,11 @@ Naming Conventions (to follow):
     cursor: pointer;
 }
 
-.button-color:hover {
+.size-button-color:hover {
     cursor: pointer;
 }
 
-.button-color {
+.size-button-color {
     width: 58px;
     height: 58px;
 }
