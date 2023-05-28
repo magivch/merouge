@@ -57,30 +57,50 @@ Naming Conventions (to follow):
     background-color: #FFE9C3;
 }
 
-.color-blue {
-    background-color: #64CBD0;
+.color-blue + label {
+    background-color: #64CBD0 !important;
 }
 
-.color-red {
-    background-color: #AE000F;
+.color-red + label {
+    background-color: #AE000F !important;
 }
 
-.color-black {
-    background-color: #363A46;
+.color-black + label {
+    background-color: #363A46 !important;
 }
 
-.color-selected {
+.color-radio-btn + label {
+
+}
+
+.color-radio-btn:checked + label {
     border: 4px solid #FFF;
     width: 62px !important;
     height: 62px !important;
+}
+
+.color-button:hover {
     cursor: pointer;
 }
 
-.size-button-color:hover {
-    cursor: pointer;
-}
-
-.size-button-color {
+.color-button {
     width: 58px;
     height: 58px;
+}
+
+.add-cart-btn {
+    background-color: #E65050 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.absorption-btn + label {
+    background-color: transparent !important;
+    border: 1px solid #F28D8D !important;
+    color: #E65050 !important;
+}
+
+.absorption-btn:checked + label {
+    background-color: #F28D8D !important;
+    color: white !important;
 }

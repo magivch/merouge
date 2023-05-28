@@ -20,27 +20,55 @@
 
         // value change events for input - range
         $(document).on('input change', '#chestSizeRange', function() {
-            $('#selectedChestSize').html( $(this).val() );
+            $('#selectedChestSize').text($(this).val());
         });
 
         $(document).on('input change', '#underChestSizeRange', function() {
-            $('#selectedUnderChestSize').html( $(this).val() );
+            $('#selectedUnderChestSize').text($(this).val());
         });
 
-        // set click events
-        $("#blue_btn, #red_btn, #black_btn").click(function () {
-            setTopProduct($(this).data('color'));
+
+        $(document).on('input change', '#hipSizeRange', function() {
+            $('#selectedHipSize').text($(this).val());
+        });
+
+        // set change events for color buttons
+        $("input[type=radio][name=top-color-button]").change(function () {
+            setTopProductDetails($(this).val());
         })
 
-        $("#first_btn, #second_btn, #third_btn").click(function () {
+        $("input[type=radio][name=bottom-color-button]").change(function () {
+            setBottomProductDetails($(this).val());
+        })
 
+        // radio change for absorption
+        $("input[type=radio][name=absorption]").change(function () {
+            $("#selectedAbsorption").text($("label[for='"+$(this).attr('id')+"']").text())
         })
 
         $("input[type=radio][name=menu-radio-button]").change(function () {
 
+            // Reset the radio button when the menu item is changed
+
+            // set the default absorption selection button
+            $("#light_btn").prop("checked", true);
+
+            // set the default color selection button
+            $("#blue_btn_top").prop("checked", true);
+            $("#blue_btn_bottom").prop("checked", true);
+
             // load the default product from this menu
-            setTopProduct('blau');
+            setTopProductDetails('blau');
+            setBottomProductDetails('blau');
         });
+
+        // set the default absorption selection button
+        $("#light_btn").prop("checked", true);
+
+        // set the default color selection button
+        $("#blue_btn_top").prop("checked", true);
+        $("#blue_btn_bottom").prop("checked", true);
+
 
         // select the first menu button (radio button checked state)
         $("#first_btn").prop("checked", true).change();
@@ -52,42 +80,28 @@
         let selectedBtn = $("input[type=radio][name=menu-radio-button]:checked")
 
         let imgUrl = 'images/' + selectedBtn.val() + '_oben_' + color + '.png'
-        $("#product-img").attr("src", imgUrl);
-        $("#product-name").text($("label[for='"+selectedBtn.attr('id')+"']").text());
-        $("#product_price").text(selectedBtn.data("topprice"));
-        $("#selected_color").text(color);
+        $("#product_img_top").attr("src", imgUrl);
+        $("#product_name_top").text($("label[for='"+selectedBtn.attr('id')+"']").text() + ' Oberteil');
+        $("#product_price_top").text(selectedBtn.data("topprice"));
+        $("#selected_color_top").text(color);
         $("#selectedChestSize").text($("#chestSizeRange").val());
         $("#selectedUnderChestSize").text($("#underChestSizeRange").val());
     }
 
-    function setTopProduct(color) {
+    function setBottomProductDetails(color) {
+        let selectedBtn = $("input[type=radio][name=menu-radio-button]:checked")
 
-        switch (color) {
-            case 'blau':
-                $("#blue_btn").addClass("color-selected");
-                $("#red_btn").removeClass("color-selected");
-                $("#black_btn").removeClass("color-selected");
-                setTopProductDetails('blau');
-                break;
+        let imgUrl = 'images/' + selectedBtn.val() + '_unten_' + color + '.png'
+        $("#product_img_bottom").attr("src", imgUrl);
+        $("#product_name_bottom").text($("label[for='"+selectedBtn.attr('id')+"']").text() + ' Slip');
+        $("#product_price_bottom").text(selectedBtn.data("bottomprice"));
+        $("#selected_color_bottom").text(color);
+        $("#selectedHipSize").text($("#hipSizeRange").val());
 
-            case 'rot':
-                $("#blue_btn").removeClass("color-selected");
-                $("#red_btn").addClass("color-selected");
-                $("#black_btn").removeClass("color-selected");
-                setTopProductDetails('rot');
-                break;
-
-            case 'schwarz':
-                $("#blue_btn").removeClass("color-selected");
-                $("#red_btn").removeClass("color-selected");
-                $("#black_btn").addClass("color-selected");
-                setTopProductDetails('schwarz');
-                break;
-
-            default:
-                break;
-        }
+        let selectedAbsorption = $("input[type=radio][name=absorption]:checked")
+        $("#selectedAbsorption").text($("label[for='"+selectedAbsorption.attr('id')+"']").text())
     }
+
 </script>
 
 <div class="container main-container py-3">
@@ -111,13 +125,13 @@
         <div class="row px-3">
 
             <div class="col-4 align-self-center">
-                <img id="product-img" src="images/0_placeholder.png" width="100%" alt="Image">
+                <img id="product_img_top" src="images/0_placeholder.png" width="100%" alt="Image">
             </div>
 
             <div class="col ps-4 font-poppins-regular">
-                <h4 id="product-name" class="fs-3 fw-normal font-poppins-medium">Product Name</h4>
+                <h4 id="product_name_top" class="fs-3 fw-normal font-poppins-medium">Product Name</h4>
 
-                <h6 id="product-desc" class="lh-base mt-1 fs-6 fw-normal">
+                <h6 id="product_desc" class="lh-base mt-1 fs-6 fw-normal">
                     Maßgeschneiderte Bikinis für einen angenehmen Tag am Strand. Der Tragekomfort macht den Oberteil zur perfekten Wahl für den Urlaub.
                 </h6>
 
@@ -128,39 +142,111 @@
                     <li>Antibacteriales Gewebe</li>
                 </ul>
 
-                <h4 class="fs-3 fw-normal font-poppins-medium">&euro; <span id="product_price">XX,XX</span> <span class="fs-6 fw-lighter text-black"> incl. MwSt.</span></h4>
+                <h4 class="fs-3 fw-normal font-poppins-medium">&euro; <span id="product_price_top">XX,XX</span> <span class="fs-6 fw-lighter text-black"> incl. MwSt.</span></h4>
 
             </div>
 
             <div class="col-4 px-4 font-poppins-regular">
 
-                <p class="fs-6 mt-2">Farbe: <span id="selected_color" class="fw-semibold">xxxx</span></p>
+                <p class="fs-6 mt-2">Farbe: <span id="selected_color_top" class="fw-semibold">xxxx</span></p>
 
-                <div class="d-flex mb-2">
-                    <div id="blue_btn" class="rounded-circle size-button-color color-blue me-5" data-color="blau"></div>
-                    <div id="red_btn" class="rounded-circle size-button-color color-red me-5" data-color="rot"></div>
-                    <div id="black_btn" class="rounded-circle size-button-color color-black" data-color="schwarz"></div>
+                <div class="btn-toolbar d-flex mb-2">
+
+                    <input id="blue_btn_top" type="radio" class="btn-check color-radio-btn color-blue"
+                           name="top-color-button" autocomplete="off" value="blau">
+                    <label class="rounded-circle color-button me-4" for="blue_btn_top"></label>
+
+                    <input id="red_btn_top" type="radio" class="btn-check color-radio-btn color-red"
+                           name="top-color-button" autocomplete="off" value="rot">
+                    <label class="rounded-circle color-button me-4" for="red_btn_top"></label>
+
+                    <input id="black_btn_top" type="radio" class="btn-check color-radio-btn color-black"
+                           name="top-color-button" autocomplete="off" value="schwarz">
+                    <label class="rounded-circle color-button" for="black_btn_top"></label>
+
                 </div>
 
-                <label class="form-label fs-6 mt-2" for="chestSizeRange">Brustumfang: <span id="selectedChestSize" class="fw-semibold">XX</span></label>
+                <label class="form-label fs-6 mt-3" for="chestSizeRange">Brustumfang: <span id="selectedChestSize" class="fw-semibold">XX</span></label>
                 <input id="chestSizeRange" type="range" class="form-range pe-4" value="78" min="74" max="113" />
 
-                <label class="form-label fs-6 mt-2" for="underChestSizeRange">Unterbrustumfang: <span id="selectedUnderChestSize" class="fw-semibold">XX</span></label>
+                <label class="form-label fs-6 mt-3" for="underChestSizeRange">Unterbrustumfang: <span id="selectedUnderChestSize" class="fw-semibold">XX</span></label>
                 <input id="underChestSizeRange" type="range" class="form-range pe-4" value="65" min="63" max="87" />
 
-                <button type="button" class="btn btn-primary mt-4">Zum Warenkorb hinzufügen</button>
-
+                <button type="button" class="add-cart-btn btn btn-primary mt-4">Zum Warenkorb hinzufügen</button>
 
             </div>
-
 
         </div>
 
     </div>
 
-    <div class="product-container mt-3 py-2 mx-5">
+    <div class="product-container mt-3 py-3 mx-5 font-poppins-regular">
 
-        test test
+        <div class="row px-3">
+
+            <div class="col-4 align-self-center">
+                <img id="product_img_bottom" src="images/0_placeholder.png" width="100%" alt="Image">
+            </div>
+
+            <div class="col ps-4 font-poppins-regular">
+                <h4 id="product_name_bottom" class="fs-3 fw-normal font-poppins-medium">Product Name</h4>
+
+                <h6 id="product_desc_bottom" class="lh-base mt-1 fs-6 fw-normal">
+                    Maßgeschneiderte Bikinis für einen angenehmen Tag am Strand. Mach Dir keine Sorgen um Deine Periode und erlebe ungestört die Freuden von Strand und Pool.
+                </h6>
+
+                <h6 class="fw-semibold mt-3">Produktbeschreibung:</h6>
+                <ul class="mt-2">
+                    <li>Auslaufsicher & Saugstark</li>
+                    <li>Wiederverwendbar & Pflegeleicht</li>
+                    <li>Nachhaltige Materialien</li>
+                    <li>Antibacteriales Gewebe</li>
+                </ul>
+
+                <h4 class="fs-3 fw-normal font-poppins-medium">&euro; <span id="product_price_bottom">XX,XX</span> <span class="fs-6 fw-lighter text-black"> incl. MwSt.</span></h4>
+
+            </div>
+
+            <div class="col-4 px-4 font-poppins-regular">
+
+                <p class="fs-6 mt-2">Farbe: <span id="selected_color_bottom" class="fw-semibold">xxxx</span></p>
+
+                <div class="btn-toolbar d-flex mb-2">
+
+                    <input id="blue_btn_bottom" type="radio" class="btn-check color-radio-btn color-blue"
+                           name="bottom-color-button" autocomplete="off" value="blau">
+                    <label class="rounded-circle color-button me-4" for="blue_btn_bottom"></label>
+
+                    <input id="red_btn_bottom" type="radio" class="btn-check color-radio-btn color-red"
+                           name="bottom-color-button" autocomplete="off" value="rot">
+                    <label class="rounded-circle color-button me-4" for="red_btn_bottom"></label>
+
+                    <input id="black_btn_bottom" type="radio" class="btn-check color-radio-btn color-black"
+                           name="bottom-color-button" autocomplete="off" value="schwarz">
+                    <label class="rounded-circle color-button" for="black_btn_bottom"></label>
+
+                </div>
+
+                <label class="form-label fs-6 mt-3" for="hipSizeRange">Hüftumfang: <span id="selectedHipSize" class="fw-semibold">XX</span></label>
+                <input id="hipSizeRange" type="range" class="form-range pe-4" value="88" min="83" max="117" />
+
+                <p class="fs-6 mt-3">Absorption: <span id="selectedAbsorption" class="fw-semibold">xxxxx</span></p>
+                <div class="btn-group" role="group">
+                    <input type="radio" class="btn-check absorption-btn" name="absorption" id="light_btn" autocomplete="off">
+                    <label class="btn btn-sm btn-outline-primary" for="light_btn">Light</label>
+
+                    <input type="radio" class="btn-check absorption-btn" name="absorption" id="medium_btn" autocomplete="off">
+                    <label class="btn btn-sm btn-outline-primary" for="medium_btn">Medium</label>
+
+                    <input type="radio" class="btn-check absorption-btn" name="absorption" id="super_btn" autocomplete="off">
+                    <label class="btn btn-sm btn-outline-primary" for="super_btn">Super</label>
+                </div>
+
+                <button type="button" class="add-cart-btn btn btn-primary mt-4">Zum Warenkorb hinzufügen</button>
+
+            </div>
+
+        </div>
 
     </div>
 
