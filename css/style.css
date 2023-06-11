@@ -43,8 +43,8 @@ Naming Conventions (to follow):
 }
 
 .radio-btn + label {
-    background-color: #EEE7E7 !important;
-    border: none !important;
+    background-color: transparent !important;
+    border: #E65050 2px solid !important;
     color: black !important;
 }
 
