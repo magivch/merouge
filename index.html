@@ -82,6 +82,7 @@
         let imgUrl = 'images/' + selectedBtn.val() + '_oben_' + color + '.png'
         $("#product_img_top").attr("src", imgUrl);
         $("#product_name_top").text($("label[for='"+selectedBtn.attr('id')+"']").text() + ' Oberteil');
+        $("#product_desc_top").text(selectedBtn.data("topdesc"))
         $("#product_price_top").text(selectedBtn.data("topprice"));
         $("#selected_color_top").text(color);
         $("#selectedChestSize").text($("#chestSizeRange").val());
@@ -94,6 +95,7 @@
         let imgUrl = 'images/' + selectedBtn.val() + '_unten_' + color + '.png'
         $("#product_img_bottom").attr("src", imgUrl);
         $("#product_name_bottom").text($("label[for='"+selectedBtn.attr('id')+"']").text() + ' Slip');
+        $("#product_desc_bottom").text(selectedBtn.data("bottomdesc"))
         $("#product_price_bottom").text(selectedBtn.data("bottomprice"));
         $("#selected_color_bottom").text(color);
         $("#selectedHipSize").text($("#hipSizeRange").val());
@@ -110,15 +112,21 @@
 
     <div class="btn-group mt-1 mb-4 px-5 font-poppins-medium" role="group">
         <input id="first_btn" type="radio" class="btn-check radio-btn" name="menu-radio-button" autocomplete="off"
-               value="1" data-topprice="29,99" data-bottomprice="35,99">
+               value="1" data-topprice="29,99" data-bottomprice="35,99"
+               data-topdesc="Wie ein Tag im Strandparadies – so fühlt sich dieses Modell an. Das Oberteil lässt sich vorne zubinden, sieht gleichzeitig stylisch und süß aus."
+               data-bottomdesc="Ein leichtes Unterteil für einen angenehmen Tag am Strand. Mach dir keine Sorgen um deine Periode und betone gleichzeitig deine Figur.">
         <label class="btn btn-lg btn-outline-primary menu-btn" for="first_btn">Ocean Paradise</label>
 
         <input id="second_btn" type="radio" class="btn-check radio-btn" name="menu-radio-button" autocomplete="off"
-               value="2" data-topprice="25,99" data-bottomprice="32,99">
+               value="2" data-topprice="25,99" data-bottomprice="32,99"
+               data-topdesc="Wie eine frische Brise am Meer: Mit diesem verspielten und femininen Oberteil gehörst du zu den stylischsten Frauen am Strand."
+               data-bottomdesc="Figurbetont und sicher: Mit diesem klassischen und schicken Unterteil machst du mit Sicherheit nichts falsch und kannst dich entspannt zurücklehnen!">
         <label class="btn btn-lg btn-outline-primary menu-btn" for="second_btn">Tropical Breeze</label>
 
         <input id="third_btn" type="radio" class="btn-check radio-btn" name="menu-radio-button" autocomplete="off"
-               value="3" data-topprice="35,99" data-bottomprice="39,99">
+               value="3" data-topprice="35,99" data-bottomprice="39,99"
+               data-topdesc="Trotze mit diesem Oberteil jede Welle und lasse dich von Nichts aufhalten. Es sitzt zu 100% sicher und lässt dich super sportlich aussehen."
+               data-bottomdesc="Besonders gut geeignet, für deinen ersten Versuch mit Perioden-Bikinis und für den Sport: Dieses Unterteil sitzt sicher und ist super bequem.">
         <label class="btn btn-lg btn-outline-primary menu-btn" for="third_btn">Wave Dancer</label>
     </div>
 
@@ -133,15 +141,15 @@
             <div class="col ps-4 font-poppins-regular">
                 <h4 id="product_name_top" class="fs-3 fw-normal font-poppins-medium">Product Name</h4>
 
-                <h6 id="product_desc" class="lh-base mt-1 fs-6 fw-normal">
-                    Maßgeschneiderte Bikinis für einen angenehmen Tag am Strand. Der Tragekomfort macht den Oberteil zur perfekten Wahl für den Urlaub.
+                <h6 id="product_desc_top" class="lh-base mt-1 fs-6 fw-normal">
+                    Top Product description here.
                 </h6>
 
                 <h6 class="fw-semibold mt-3">Produktbeschreibung:</h6>
                 <ul class="mt-2">
                     <li>Herausnehmbare Softpads</li>
                     <li>Nachhaltige & hautfreundliche Materialien</li>
-                    <li>Antibacteriales Gewebe</li>
+                    <li>Antibakterielles Gewebe</li>
                 </ul>
 
                 <h4 class="fs-3 fw-normal font-poppins-medium">&euro; <span id="product_price_top">XX,XX</span> <span class="fs-6 fw-lighter text-black"> incl. MwSt.</span></h4>
@@ -194,15 +202,15 @@
                 <h4 id="product_name_bottom" class="fs-3 fw-normal font-poppins-medium">Product Name</h4>
 
                 <h6 id="product_desc_bottom" class="lh-base mt-1 fs-6 fw-normal">
-                    Maßgeschneiderte Bikinis für einen angenehmen Tag am Strand. Mach Dir keine Sorgen um Deine Periode und erlebe ungestört die Freuden von Strand und Pool.
+                    Bottom Product description here.
                 </h6>
 
                 <h6 class="fw-semibold mt-3">Produktbeschreibung:</h6>
                 <ul class="mt-2">
-                    <li>Auslaufsicher & Saugstark</li>
-                    <li>Wiederverwendbar & Pflegeleicht</li>
+                    <li>100% Auslaufsicher</li>
+                    <li>Wiederverwendbar &amp; Pflegeleicht</li>
                     <li>Nachhaltige Materialien</li>
-                    <li>Antibacteriales Gewebe</li>
+                    <li>Antibakterielles Gewebe</li>
                 </ul>
 
                 <h4 class="fs-3 fw-normal font-poppins-medium">&euro; <span id="product_price_bottom">XX,XX</span> <span class="fs-6 fw-lighter text-black"> incl. MwSt.</span></h4>
